@@ -1,0 +1,14 @@
+/*
+@font-face {
+  font-family: "***";
+  src: url("fonts/***");
+}
+*/
+html, body, .maincontainer{
+  height: 100%;
+  overflow: hidden;
+}
+
+.maincontainer{
+  text-align: center;
+}
