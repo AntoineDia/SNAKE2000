@@ -35,12 +35,15 @@ function sk(){
 
 //Création de la pomme
 function newapple(){
-  do{
-    pomme[0] = Math.floor(Math.random() * 19);
-    pomme[1] = Math.floor(Math.random() * 19);
-  }while(colision(pomme[0],pomme[1]));
+    pomme[0] = Math.floor(Math.random() * 20);
+    pomme[1] = Math.floor(Math.random() * 20);
+  if(colision(pomme[0],pomme[1])){
+    newapple();
+  } else {
   ctx.fillStyle = 'red';
   ctx.fillRect(mp(pomme[0]),mp(pomme[1]),mp(1),mp(1));
+  return;
+  }
 }
 
 
