@@ -9,7 +9,6 @@ var perdu = false;
 var ss = 400;
 var asmove = false;
 var pomme = [0,0];
-var message = "YOU LOSE, PRESS ANY KEY TO RESTART";
 
 //le snake
 so = 'l';
@@ -49,13 +48,13 @@ function newapple(){
 
 //ondulation latérale || déplacement du serpent
 function odl(){
+  if(perdu){
+    w.cancelAnimationFrame(move);
+    return;
+  }
   setTimeout(function() {
     sx = 0;
     sy = 0;
-    if(perdu){
-      w.cancelAnimationFrame(move);
-      return;
-    }
     requestAnimationFrame(odl);
     switch (so) {
       case 'u': sy = -1;
@@ -77,6 +76,7 @@ function odl(){
     }
     sk();
     if(colision(sp[0].x,sp[0].y)){
+      message = `TOO BAD, NO MORE HEAD!\n\nYOU WERE AT ${sp.length/2}% \nPRESS ANY KEY TO RESTART`;
       fin();
     }
     asmove = false;
@@ -113,7 +113,6 @@ function pat(i,y){
 
 //game over
 function fin(){
-  terrain();
   perdu = true;
   setTimeout(function(){ alert(message); }, 1);
   dc.addEventListener('keydown',function(){
@@ -150,7 +149,7 @@ terrain();
 //vitesse
 function makeitfaster(){
   if (sp.length == 200){
-    message = "YOU ARE A WINNER OF SNAKE2000! YOU CAN RESTART THE GAME NOW, YOU KNOW HOW ;)";
+    message = "HERE COMES THE CHAMP'!!\n\nYOU ARE A WINNER OF SNAKE2000! \nYOU CAN RESTART THE GAME NOW ;)";
     fin();
   }
   if(ss > 150){
@@ -182,4 +181,4 @@ function sndir(touche){
 dc.addEventListener('keydown',sndir);
 
 //Le bonjour
-setTimeout(function(){ alert("WELCOME TO SNAKE2000! \nWIN BY COVERING HALF OF THE FIELD! \nUSE ARROW KEY OR ZQSD TO MOVE"); }, 50);
+setTimeout(function(){ alert("WELCOME TO SNAKE2000! \n\nWIN BY COVERING HALF OF THE FIELD! \nUSE ARROW KEY OR ZQSD TO MOVE"); }, 50);

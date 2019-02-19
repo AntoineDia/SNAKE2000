@@ -4,8 +4,11 @@
   src: url("fonts/***");
 }
 */
+html, body, .maincontainer{
+  height: 100%;
+  overflow: hidden;
+}
 
-
-#bgimg{
-  width: 50px;
+.maincontainer{
+  text-align: center;
 }
